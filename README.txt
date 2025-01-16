@@ -8,39 +8,7 @@ A real-time chat application built with Django and Django Channels, featuring us
 - Persistent chat history
 - Responsive design
 
-## Project Structure
-```
-chat_project/
-│
-├── chat/
-│   ├── __init__.py
-│   ├── models.py
-│   ├── consumers.py
-│   ├── routing.py
-│   ├── views.py
-│   ├── urls.py
-│   ├── forms.py
-│   └── templates/
-│       ├── chat/
-│       │   ├── base.html
-│       │   ├── login.html
-│       │   ├── register.html
-│       │   └── chat.html
-│       └── static/
-│           ├── css/
-│           │   └── style.css
-│           └── js/
-│               └── chat.js
-│
-├── chat_project/
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-│
-└── requirements.txt
-```
+
 
 ## Prerequisites
 - Python 3.8 or higher
