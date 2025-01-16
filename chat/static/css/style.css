@@ -1,0 +1,213 @@
+/* Base layout */
+.chat-container {
+    display: flex;
+    height: calc(100vh - 56px);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+/* Toggle button container */
+.toggle-container {
+    position: fixed;
+    left: 230px; /* Align exactly with sidebar width */
+    top: 65px;
+    transition: all 0.3s ease;
+    z-index: 1030;
+}
+
+/* Sidebar interaction when collapsed */
+.sidebar.collapsed + .toggle-container {
+    left: 0;
+}
+
+/* Toggle button */
+.menu-toggle {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: #0056b3;
+}
+
+/* Users list */
+.users-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.user-item:hover {
+    background-color: #e9ecef;
+}
+
+.user-item.active {
+    background-color: #e9ecef;
+}
+.welcome-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+    color: #343a40;
+}
+
+/* Chat area */
+.chat-area {
+    flex-grow: 1;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    min-width: 0; /* Prevent overflow */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Message styles */
+.message {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    max-width: 70%;
+    position: relative;
+}
+
+.message.sent {
+    background-color: #007bff;
+    color: white;
+    margin-left: auto;
+}
+
+.message.received {
+    background-color: #f1f1f1;
+    margin-right: auto;
+}
+/* Ensure scrollable chat messages */
+.card-body {
+    overflow: hidden; /* Prevent overflow of the body */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    overflow-y: auto; /* Enable vertical scrolling */
+    flex-grow: 1; /* Allow it to occupy remaining vertical space */
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+/* Customize scrollbar for chat-messages */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #ced4da;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 56px;
+        bottom: 0;
+        transform: translateX(-100%);
+        z-index: 1020;
+        width: 280px;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .chat-area {
+        width: 100%;
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+    }
+
+    .toggle-container {
+        position: fixed;
+        left: 0;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar:not(.collapsed) ~ .toggle-container {
+        left: 230px
+    }
+}
+
+/* Scrollbar styles */
+.users-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.users-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.users-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.users-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
